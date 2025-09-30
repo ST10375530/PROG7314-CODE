@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="logoutButton" type="id" />
+    <item name="notificationsButton" type="id" />
+    <item name="settingsTitle" type="id" />
+    <item name="accountSectionTitle" type="id" />
+    <item name="accountDetailsButton" type="id" />
+    <item name="accountDetailsText" type="id" />
+    <item name="allergyName" type="id" />
+    <item name="allergyDate" type="id" />
+    <item name="treatmentName" type="id" />
+    <item name="treatmentDate" type="id" />
+    <item name="medicationName" type="id" />
+    <item name="medicationDate" type="id" />
+    <item name="vaccinationsRecyclerView" type="id" />
+    <item name="noVaccinationsText" type="id" />
+    <item name="vaccinationName" type="id" />
+    <item name="vaccinationDate" type="id" />
+</resources>

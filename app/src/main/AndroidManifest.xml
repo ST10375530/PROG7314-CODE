@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PetCareApp"
+        tools:targetApi="35">
+        <activity
+            android:name=".UI.HealthRecord.AddMedicalInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.HealthRecord.AllMedicationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.HealthRecord.AllTreatmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.HealthRecord.AllAllergiesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.HealthRecord.AllVaccinationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.HealthRecord.MedicalRecordsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.HealthRecord.HealthRecords"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Main.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UI.Welcome.WelcomeActivity" />
+        <activity android:name=".UI.Welcome2.Welcome2Activity" />
+        <activity android:name=".UI.Welcome3.Welcome3Activity" />
+        <activity android:name=".UI.Login.LoginActivity" />
+        <activity android:name=".UI.Register.RegisterActivity" />
+        <activity android:name=".UI.Home.HomeActivity" />
+        <activity android:name=".UI.Profile.ProfileActivity" />
+        <activity android:name=".UI.PetProfiles.PetProfileActivity" />
+        <activity android:name=".UI.AddPets.AddPetsActivity" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+    </application>
+
+</manifest>

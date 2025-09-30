@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "751956835634",
+    "project_id": "petcareappfinal2",
+    "storage_bucket": "petcareappfinal2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751956835634:android:6cd560edd585f3f144eb2b",
+        "android_client_info": {
+          "package_name": "vcmsa.projects.petcareapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751956835634-l7571b29on2skpd7j33ol7s4ke8l90og.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vcmsa.projects.petcareapp",
+            "certificate_hash": "2d9e231809d1504349796a0b6407dca1d41df12d"
+          }
+        },
+        {
+          "client_id": "751956835634-npmcupho20qvntoot0h13p8ik2of0ag7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBar21R-IGnxPET5OXi4o8IBUH3Ix7BDrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751956835634-npmcupho20qvntoot0h13p8ik2of0ag7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751956835634:android:42145b1b5f47030f44eb2b",
+        "android_client_info": {
+          "package_name": "vcmsa.projects.regtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751956835634-npmcupho20qvntoot0h13p8ik2of0ag7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBar21R-IGnxPET5OXi4o8IBUH3Ix7BDrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751956835634-npmcupho20qvntoot0h13p8ik2of0ag7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
