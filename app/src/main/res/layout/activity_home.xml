@@ -54,14 +54,15 @@
 
             <ImageButton
                 android:id="@+id/settings_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@drawable/rounded_top_corners"
                 android:contentDescription="@string/settings"
                 android:padding="8dp"
                 android:src="@drawable/baseline_settings_24"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <!-- Scrollable Content Area -->
@@ -527,14 +528,15 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/hDiscoverNavItem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 android:paddingTop="4dp"
+                android:paddingEnd="8dp"
                 android:paddingBottom="4dp">
 
                 <ImageView
@@ -583,14 +585,15 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/healthRecordsNavItem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 android:paddingTop="4dp"
+                android:paddingEnd="8dp"
                 android:paddingBottom="4dp">
 
                 <ImageView

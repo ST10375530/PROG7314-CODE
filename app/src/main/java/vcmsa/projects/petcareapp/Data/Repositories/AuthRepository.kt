@@ -43,7 +43,8 @@ class AuthRepository() {
 
             // Store the user in Firestore - CORRECTED
             users.document(user.uid).set(newUser).await()
-
+            //sending verification email
+            user.sendEmailVerification()
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
@@ -71,7 +72,8 @@ class AuthRepository() {
             if (user != null) {
                 // Check if this is a new user (first-time sign-in)
                 val isNewUser = authResult.additionalUserInfo?.isNewUser ?: false
-
+                //sending verification email
+                user.sendEmailVerification()
                 if (isNewUser) {
                     // First-time sign-up with Google
                     val displayName = user.displayName ?: user.email?.substringBefore("@") ?: "User"
@@ -96,7 +98,6 @@ class AuthRepository() {
                 }
                 // Existing users will already have their data in Firestore
             }
-
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
