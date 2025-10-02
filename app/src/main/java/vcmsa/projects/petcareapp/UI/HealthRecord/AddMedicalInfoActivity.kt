@@ -4,25 +4,35 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.firestore.FirebaseFirestore
 import vcmsa.projects.petcareapp.R
-import java.util.Calendar
+import java.util.*
 
 class AddMedicalInfoActivity : AppCompatActivity() {
+
+    private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_add_medical_info)
+
+        // Initialize Firestore
+        db = FirebaseFirestore.getInstance()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         setupDatePickers()
         setupClickListeners()
     }
@@ -81,19 +91,66 @@ class AddMedicalInfoActivity : AppCompatActivity() {
         val medication = findViewById<TextInputEditText>(R.id.txtMedication).text.toString()
         val emergencyContact = findViewById<TextInputEditText>(R.id.txtEmergencyContact).text.toString()
 
-        // Create intent to pass data back
-        val resultIntent = Intent().apply {
-            putExtra("ALLERGIES", allergies)
-            putExtra("ALLERGY_DATE", allergyDate)
-            putExtra("TREATMENT", treatment)
-            putExtra("TREATMENT_DATE", treatmentDate)
-            putExtra("VACCINATION", vaccination)
-            putExtra("VACCINATION_DATE", vaccinationDate)
-            putExtra("MEDICATION", medication)
-            putExtra("EMERGENCY_CONTACT", emergencyContact)
+
+        if (allergies.isEmpty() || treatment.isEmpty() || vaccination.isEmpty()) {
+            Toast.makeText(this, "Please fill in all required fields", Toast.LENGTH_SHORT).show()
+            return
         }
 
-        setResult(RESULT_OK, resultIntent)
-        finish()
+
+        val petId = intent.getStringExtra("PET_ID") ?: generatePetId()
+
+
+        val medicalInfo = mapOf(
+            "petId" to petId,
+            "allergies" to allergies,
+            "allergyDate" to allergyDate,
+            "treatment" to treatment,
+            "treatmentDate" to treatmentDate,
+            "vaccination" to vaccination,
+            "vaccinationDate" to vaccinationDate,
+            "medication" to medication,
+            "emergencyContact" to emergencyContact,
+            "createdAt" to System.currentTimeMillis(),
+            "updatedAt" to System.currentTimeMillis()
+        )
+
+        // Save to Firestore in healthrecord
+        saveToFirestore(medicalInfo)
+    }
+
+    private fun saveToFirestore(medicalInfo: Map<String, Any>) {
+        db.collection("healthrecord")
+            .add(medicalInfo)
+            .addOnSuccessListener { documentReference ->
+
+                Toast.makeText(this, "Medical info saved successfully!", Toast.LENGTH_SHORT).show()
+
+                // Create intent to pass data back
+                val resultIntent = Intent().apply {
+                    putExtra("DOCUMENT_ID", documentReference.id)
+                    putExtra("PET_ID", medicalInfo["petId"].toString())
+                    putExtra("ALLERGIES", medicalInfo["allergies"].toString())
+                    putExtra("ALLERGY_DATE", medicalInfo["allergyDate"].toString())
+                    putExtra("TREATMENT", medicalInfo["treatment"].toString())
+                    putExtra("TREATMENT_DATE", medicalInfo["treatmentDate"].toString())
+                    putExtra("VACCINATION", medicalInfo["vaccination"].toString())
+                    putExtra("VACCINATION_DATE", medicalInfo["vaccinationDate"].toString())
+                    putExtra("MEDICATION", medicalInfo["medication"].toString())
+                    putExtra("EMERGENCY_CONTACT", medicalInfo["emergencyContact"].toString())
+                }
+
+                setResult(RESULT_OK, resultIntent)
+                finish()
+            }
+            .addOnFailureListener { e ->
+
+                Toast.makeText(this, "Error saving medical info: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun generatePetId(): String {
+
+        return "pet_${System.currentTimeMillis()}"
     }
 }
