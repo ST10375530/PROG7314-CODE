@@ -51,6 +51,7 @@ class AuthRepository() {
         }
     }
 
+
     // Sign in user with email and password
     suspend fun signInUserFirebase(email: String, password: String): Result<Unit> {
         return try {
@@ -101,6 +102,23 @@ class AuthRepository() {
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
+        }
+    }
+
+    //fun to get current user
+    fun getCurrentUser(): User?
+    {
+        val logUser = firebaseAuth.currentUser
+        if(logUser != null) {
+            val user = User(
+                logUser.uid,
+                logUser.displayName ,
+                logUser.email
+            )
+            return user
+        }
+        else{
+            return null
         }
     }
 
