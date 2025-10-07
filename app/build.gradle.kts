@@ -62,4 +62,7 @@ dependencies {
     //google + facebook
     implementation(libs.play.services.identity)
     implementation("com.facebook.android:facebook-login:18.1.3")
+    //import for retrofit and gson
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }

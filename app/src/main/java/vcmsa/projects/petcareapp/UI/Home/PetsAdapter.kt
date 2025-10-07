@@ -27,7 +27,7 @@ class PetsAdapter(
     override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
         val pet = pets[position]
         holder.tvPetName.text = pet.name
-        // Set image and background based on your PetInfo properties
+        // Set image and background based on PetInfo properties
         holder.ivPetPhoto.setImageResource(R.drawable.dog1)
         holder.ivPetPhoto.setBackgroundResource(R.drawable.circle_pet)
 
