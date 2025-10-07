@@ -1,4 +1,5 @@
 package vcmsa.projects.petcareapp.UI.Settings
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import kotlinx.coroutines.launch
 import vcmsa.projects.petcareapp.R
+import vcmsa.projects.petcareapp.UI.Login.LoginActivity
 import vcmsa.projects.petcareapp.databinding.ActivitySettingsBinding
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
@@ -225,9 +227,9 @@ class SettingsActivity : AppCompatActivity() {
                 Toast.makeText(this@SettingsActivity, "Logged out successfully",
                     Toast.LENGTH_SHORT).show()
                 // Navigate to login screen
-                // val intent = Intent(this@SettingsActivity, LoginActivity::class.java)
-                // startActivity(intent)
-                // finish()
+                val intent : Intent = Intent(this@SettingsActivity, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
             } catch (e: Exception) {
                 Toast.makeText(this@SettingsActivity, "Logout failed: ${e.message}",
                     Toast.LENGTH_SHORT).show()
