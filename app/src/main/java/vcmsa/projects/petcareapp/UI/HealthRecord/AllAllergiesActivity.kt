@@ -41,6 +41,7 @@ class AllAllergiesActivity : AppCompatActivity() {
     }
 
     private fun loadAllergies() {
+        //setting up shared preferences (Developers, 2025):
         val sharedPref = getSharedPreferences("medical_info", MODE_PRIVATE)
         val allergiesJson = sharedPref.getString("ALLERGIES", "[]")
         val allergies = jsonToAllergies(allergiesJson ?: "[]")
@@ -65,6 +66,7 @@ class AllAllergiesActivity : AppCompatActivity() {
     private fun jsonToAllergies(jsonString: String): List<Allergy> {
         val allergies = mutableListOf<Allergy>()
         try {
+            //saving the data in json (Developers, 2025):
             val jsonArray = org.json.JSONArray(jsonString)
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
@@ -78,3 +80,7 @@ class AllAllergiesActivity : AppCompatActivity() {
         return allergies
     }
 }
+
+//Reference list:
+
+//Developers. 2025. Save simple data with SharedPreferences. [Online]. Available at: https://developer.android.com/training/data-storage/shared-preferences [Accessed 29 September 2025].

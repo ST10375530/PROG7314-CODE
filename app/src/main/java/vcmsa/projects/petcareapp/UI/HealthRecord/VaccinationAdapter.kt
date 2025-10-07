@@ -13,11 +13,13 @@ class VaccinationAdapter(private val vaccinations: MutableList<Vaccination>) :
     RecyclerView.Adapter<VaccinationAdapter.VaccinationViewHolder>() {
 
     class VaccinationViewHolder(itemView: android.view.View) : RecyclerView.ViewHolder(itemView) {
+        //setting what each recycleView card must display (Geeksforgeeks, 2025):
         val name: TextView = itemView.findViewById(R.id.vaccinationName)
         val date: TextView = itemView.findViewById(R.id.vaccinationDate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VaccinationViewHolder {
+        //we then infalte the recycleView aka make it display on the page (Geeksforgeeks, 2025):
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_vaccination, parent, false)
         return VaccinationViewHolder(view)
@@ -45,3 +47,7 @@ class VaccinationAdapter(private val vaccinations: MutableList<Vaccination>) :
 
     fun getVaccinations(): List<Vaccination> = vaccinations.toList()
 }
+
+//Reference list:
+
+//Geeksforgeeks. 2025. RecyclerView in Android with Example. [Online]. Available at: https://www.geeksforgeeks.org/android/android-recyclerview/ [Accessed 7 September 2025].

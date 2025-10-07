@@ -14,12 +14,13 @@ class PetRepository {
 
     suspend fun addPet(petInfo: PetInfo): Result<Unit> {
         return try {
+            //getting the current user (Firebase, 2025):
             val currentUser = firebaseAuth.currentUser
             if (currentUser == null) {
                 return Result.failure(Exception("User not authenticated"))
             }
 
-            // Generate a unique ID for the pet
+            // Generate a unique ID for the pet (Firebase, 2025):
             val petId = petsCollection.document().id
 
             // Create pet with owner ID and pet ID
@@ -28,10 +29,10 @@ class PetRepository {
                 petId = petId
             )
 
-            // Add pet to pets collection
+            // Add pet to pets collection (Firebase, 2025):
             petsCollection.document(petId).set(petWithIds).await()
 
-            // Also add reference to user's pets subcollection
+            // Also add reference to user's pets subcollection (Firebase, 2025):
             usersCollection.document(currentUser.uid)
                 .collection("user_pets")
                 .document(petId)
@@ -46,11 +47,12 @@ class PetRepository {
 
     suspend fun getUserPets(): Result<List<PetInfo>> {
         return try {
+            //getting the current user (Firebase, 2025):
             val currentUser = firebaseAuth.currentUser
             if (currentUser == null) {
                 return Result.failure(Exception("User not authenticated"))
             }
-
+            //fetching all their pets with a dataSnapshot (Firebase, 2025):
             val querySnapshot = petsCollection
                 .whereEqualTo("ownerId", currentUser.uid)
                 .get()
@@ -65,15 +67,16 @@ class PetRepository {
             Result.failure(e)
         }
     }
-
+    //this function hasnt been implemented yet
     suspend fun updatePet(petId: String, updatedPetInfo: PetInfo): Result<Unit> {
         return try {
+            //getting the current firebase user (Firebase, 2025):
             val currentUser = firebaseAuth.currentUser
             if (currentUser == null) {
                 return Result.failure(Exception("User not authenticated"))
             }
 
-            // Verify the pet belongs to current user
+            // Verify the pet belongs to current user (Firebase, 2025):
             val petDoc = petsCollection.document(petId).get().await()
             if (petDoc.exists() && petDoc.get("ownerId") == currentUser.uid) {
                 petsCollection.document(petId).set(updatedPetInfo.copy(petId = petId, ownerId = currentUser.uid)).await()
@@ -86,3 +89,7 @@ class PetRepository {
         }
     }
 }
+
+//Reference List:
+
+//Firebase. 2025. Get started with Cloud Firestore. [Online]. Available at: https://firebase.google.com/docs/firestore/quickstart [Accessed 27 September 2025].

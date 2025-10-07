@@ -101,8 +101,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.hDiscoverNavItem.setOnClickListener {
-            val intent = Intent(this, VetsActivity::class.java)
-            startActivity(intent)
+            Toast.makeText(this,"Coming soon", Toast.LENGTH_LONG).show()
         }
 
         binding.settingsButton.setOnClickListener {

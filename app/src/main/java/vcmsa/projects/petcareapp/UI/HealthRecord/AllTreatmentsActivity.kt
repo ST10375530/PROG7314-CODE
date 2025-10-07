@@ -53,6 +53,7 @@ class AllTreatmentsActivity : AppCompatActivity() {
     }
 
     private fun loadTreatments() {
+        //setting up sharedpreferences (Developers, 2025):
         val sharedPref = getSharedPreferences("medical_info", MODE_PRIVATE)
         val treatmentsJson = sharedPref.getString("TREATMENTS", "[]")
         val treatments = jsonToTreatments(treatmentsJson ?: "[]")
@@ -66,6 +67,7 @@ class AllTreatmentsActivity : AppCompatActivity() {
     private fun jsonToTreatments(jsonString: String): List<Treatment> {
         val treatments = mutableListOf<Treatment>()
         try {
+            //passing from json (Developers, 2025):
             val jsonArray = JSONArray(jsonString)
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
@@ -79,3 +81,6 @@ class AllTreatmentsActivity : AppCompatActivity() {
         return treatments
     }
 }
+//Reference list:
+
+//Developers. 2025. Save simple data with SharedPreferences. [Online]. Available at: https://developer.android.com/training/data-storage/shared-preferences [Accessed 29 September 2025].

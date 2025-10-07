@@ -16,7 +16,7 @@ import vcmsa.projects.petcareapp.R
 import java.util.*
 
 class AddMedicalInfoActivity : AppCompatActivity() {
-
+        //late init var for firestore (Firebase, 2025):
     private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class AddMedicalInfoActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_add_medical_info)
 
-        // Initialize Firestore
+        // Initialize Firestore (Firebase, 2025):
         db = FirebaseFirestore.getInstance()
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -115,11 +115,12 @@ class AddMedicalInfoActivity : AppCompatActivity() {
             "updatedAt" to System.currentTimeMillis()
         )
 
-        // Save to Firestore in healthrecord
+        // Save to Firestore in healthrecord (Firebase, 2025):
         saveToFirestore(medicalInfo)
     }
 
     private fun saveToFirestore(medicalInfo: Map<String, Any>) {
+        //adding to the collection (Firebase, 2025):
         db.collection("healthrecord")
             .add(medicalInfo)
             .addOnSuccessListener { documentReference ->
@@ -154,3 +155,7 @@ class AddMedicalInfoActivity : AppCompatActivity() {
         return "pet_${System.currentTimeMillis()}"
     }
 }
+
+//reference list:
+
+////Firebase. 2025. Get started with Cloud Firestore. [Online]. Available at: https://firebase.google.com/docs/firestore/quickstart [Accessed 27 September 2025].
