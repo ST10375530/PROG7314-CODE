@@ -155,5 +155,72 @@ The API is hosted on **Render**, allowing the Android app to connect to it over 
 ---
 
 ## Screenshots & Evidence
+<img width="729" height="410" alt="image" src="https://github.com/user-attachments/assets/70a9720b-df72-4d6f-8461-858bf12b85ac" />
 
-*(Screenshots and additional supporting materials to be added here.)*
+<img width="750" height="398" alt="image" src="https://github.com/user-attachments/assets/9c1e3f9d-cec2-4bd8-b568-57b454971d55" />
+
+<img width="761" height="428" alt="image" src="https://github.com/user-attachments/assets/a88ef7ef-d1df-46e9-8424-fab0a8b9bd94" />
+
+<img width="721" height="383" alt="image" src="https://github.com/user-attachments/assets/30915e7d-df17-4327-a8ed-2e5eb2fb227c" />
+
+<img width="726" height="408" alt="image" src="https://github.com/user-attachments/assets/eede8c74-4680-4f6b-b19f-1a6e5fe829d4" />
+
+<img width="726" height="408" alt="image" src="https://github.com/user-attachments/assets/bd8deb00-d274-4b24-8987-156598ab20c2" />
+
+<img width="731" height="411" alt="image" src="https://github.com/user-attachments/assets/876c2932-5045-494d-8ef6-27399ffc7016" />
+
+<img width="753" height="423" alt="image" src="https://github.com/user-attachments/assets/db534ed4-655d-4480-b292-ea7104d8a906" />
+
+<img width="761" height="404" alt="image" src="https://github.com/user-attachments/assets/e3643286-eae6-4c2e-8602-88e460214687" />
+
+<img width="766" height="431" alt="image" src="https://github.com/user-attachments/assets/a5728c1e-a37b-40c8-afe7-7c0278f74030" />
+
+<img width="675" height="359" alt="image" src="https://github.com/user-attachments/assets/13edaf8f-6a1d-4e65-a22f-1cfabedaaf94" />
+
+<img width="672" height="378" alt="image" src="https://github.com/user-attachments/assets/4dc95fbe-3b7b-4549-b9cc-d98933f8f0b5" />
+
+<img width="686" height="364" alt="image" src="https://github.com/user-attachments/assets/6cf61e98-93b4-448f-90d5-aff13ba60ca8" />
+
+<img width="726" height="408" alt="image" src="https://github.com/user-attachments/assets/d5853953-22de-40f3-8bdb-26ea667aeb8c" />
+
+<img width="726" height="386" alt="image" src="https://github.com/user-attachments/assets/2c6eac7d-a8ed-42a0-b53d-044b2c435274" />
+
+<img width="739" height="416" alt="image" src="https://github.com/user-attachments/assets/bc9f2aab-0118-44a6-87c5-9446d6248174" />
+
+<img width="737" height="391" alt="image" src="https://github.com/user-attachments/assets/b6fe1d9b-4fe4-4552-a55e-4ff9f0f21407" />
+
+<img width="742" height="417" alt="image" src="https://github.com/user-attachments/assets/918d7a4e-f37d-4928-bcf3-581c2789bc5e" />
+
+<img width="721" height="405" alt="image" src="https://github.com/user-attachments/assets/c5c9ea27-34ad-4472-abbf-11ec1c1f7a09" />
+
+<img width="737" height="414" alt="image" src="https://github.com/user-attachments/assets/007de251-1dfd-4897-9b7b-4f293678c7d0" />
+
+
+<img width="753" height="423" alt="image" src="https://github.com/user-attachments/assets/f6d30120-5472-473d-a5ac-91d929c605d4" />
+
+
+<img width="716" height="403" alt="image" src="https://github.com/user-attachments/assets/ac713e9a-efd0-4be4-bd9a-4e111e2e7488" />
+
+<img width="726" height="408" alt="image" src="https://github.com/user-attachments/assets/beeeb443-936a-4072-b924-c610be26b9a1" />
+
+<img width="731" height="411" alt="image" src="https://github.com/user-attachments/assets/86934d5c-f9e8-4293-8177-e8346cd97049" />
+
+<img width="836" height="444" alt="image" src="https://github.com/user-attachments/assets/c78b8273-87b0-41c1-b5dc-efad2e6837a0" />
+
+<img width="940" height="529" alt="image" src="https://github.com/user-attachments/assets/5527a158-1b91-4986-8248-b1db50d2a010" />
+
+<img width="940" height="529" alt="image" src="https://github.com/user-attachments/assets/c1c975b7-04af-4142-aa97-e991d22f28d7" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
