@@ -8,6 +8,14 @@ https://youtu.be/uHv4885ecJA
 ## API URL:
 https://petnest-api.onrender.com/
 ---
+
+##Team members:
+- Joshua Ponquett: St10405508
+- Thando Phiri: Thando Phiri
+- Lihlethando Funde: ST10210396
+- Ayana Modise: ST10375530
+
+---
 ## Project Overview
 
 **PetNest** is a mobile application prototype designed to assist pet owners in managing their pets’ health and wellness.  
