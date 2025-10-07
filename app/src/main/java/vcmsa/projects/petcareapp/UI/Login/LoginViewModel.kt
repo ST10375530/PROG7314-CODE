@@ -1,5 +1,6 @@
 package vcmsa.projects.petcareapp.UI.Login
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,6 +15,27 @@ class LoginViewModel : ViewModel()
 
     private val _authRepo = AuthRepository()
 
+    fun signInWIthFirebase(email: String, password: String)
+    {
+        viewModelScope.launch {
+            try{
+                val result = _authRepo.signInUserFirebase(email,password)
+                if(result.isSuccess)
+                {
+                    successMessage.postValue("sign-in successful with firebase!")
+                }
+                else{
+                    errorMessage.postValue("Incorrect username or password!")
+                }
+            }
+            catch(e: Exception)
+            {
+                Log.d("FirebaseLoginErr:", e.message.toString())
+                errorMessage.postValue("Unexpected error occured")
+            }
+        }
+    }
+
     fun signInWithGoogle(idToken: String) {
         viewModelScope.launch {
             try {
@@ -26,6 +48,7 @@ class LoginViewModel : ViewModel()
                     )
                 }
             } catch (e: Exception) {
+                Log.d("GoogleLoginErr:", e.message.toString())
                 errorMessage.postValue("Unexpected error during Google sign-in")
             }
         }

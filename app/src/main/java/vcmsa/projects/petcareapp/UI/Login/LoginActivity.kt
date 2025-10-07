@@ -36,9 +36,9 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            finish() //finish login activity so user can't go back
+            var email = binding.loginEditEmail.text.toString()
+            var password =  binding.loginEditPassword.text.toString()
+            loginViewModel.signInWIthFirebase(email,password)
         }
 
         binding.registerLink.setOnClickListener {
