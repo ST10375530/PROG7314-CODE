@@ -9,7 +9,7 @@ https://youtu.be/uHv4885ecJA
 https://petnest-api.onrender.com/
 ---
 
-##Team members:
+## Team members:
 - Joshua Ponquett: St10405508
 - Thando Phiri: Thando Phiri
 - Lihlethando Funde: ST10210396
