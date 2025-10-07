@@ -2,7 +2,12 @@
 ## POE Part 2 – README
 
 ---
-
+##Youtube video Link:
+https://youtu.be/uHv4885ecJA
+---
+## API URL:
+https://petnest-api.onrender.com/
+---
 ## Project Overview
 
 **PetNest** is a mobile application prototype designed to assist pet owners in managing their pets’ health and wellness.  
