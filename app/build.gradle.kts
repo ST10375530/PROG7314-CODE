@@ -1,14 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.plugin.parcelize")
     id("kotlin-kapt")
     alias(libs.plugins.google.services)
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.1.0"
+
 }
 
 android {
     namespace = "vcmsa.projects.petcareapp"
     compileSdk = 35
     viewBinding.isEnabled=true
+    dataBinding.isEnabled = true
 
     defaultConfig {
         applicationId = "vcmsa.projects.petcareapp"
@@ -65,4 +69,6 @@ dependencies {
     //import for retrofit and gson
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    //serilization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }

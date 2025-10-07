@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.card.MaterialCardView
 import vcmsa.projects.petcareapp.R
+import vcmsa.projects.petcareapp.UI.ApiMedical.MedicationListActivity
 
 
 class HealthRecords : AppCompatActivity() {
@@ -63,6 +64,11 @@ class HealthRecords : AppCompatActivity() {
 
         findViewById<TextView>(R.id.seeAllMedications).setOnClickListener {
             val intent = Intent(this, AllMedicationsActivity::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<TextView>(R.id.seeAllMedicationIdentifier).setOnClickListener {
+            val intent = Intent(this, MedicationListActivity::class.java)
             startActivity(intent)
         }
 

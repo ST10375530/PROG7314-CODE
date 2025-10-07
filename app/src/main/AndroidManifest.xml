@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -37,6 +37,9 @@
             android:name=".UI.Settings.SettingsActivity"
             android:exported="false" />
         <activity
+            android:name=".UI.ApiMedical.MedicationListActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.Main.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -49,6 +52,7 @@
         <activity android:name=".UI.Welcome2.Welcome2Activity" />
         <activity android:name=".UI.Welcome3.Welcome3Activity" />
         <activity android:name=".UI.Login.LoginActivity" />
+        <activity android:name=".UI.specificMedicine.MedicationDetailActivity" />
         <activity android:name=".UI.Register.RegisterActivity" />
         <activity android:name=".UI.Home.HomeActivity" />
         <activity android:name=".UI.Profile.ProfileActivity" />
