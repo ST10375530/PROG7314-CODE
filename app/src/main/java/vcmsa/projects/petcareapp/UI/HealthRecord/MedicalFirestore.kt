@@ -1,13 +1,23 @@
 package vcmsa.projects.petcareapp.UI.HealthRecord
 
 import com.google.android.gms.tasks.Task
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.firestoreSettings
+import com.google.firebase.firestore.persistentCacheSettings
 import vcmsa.projects.petcareapp.Data.Models.MedicalRecord
 
 class MedicalFirestore {
 
-    private val db = FirebaseFirestore.getInstance()
+    //made it so the firestore can work offline with caching (Firebase, 2025):
+    private val db = Firebase.firestore.apply {
+        firestoreSettings  = firestoreSettings {
+            //using the persistent caching setting (Firebase, 2025):
+            setLocalCacheSettings(persistentCacheSettings { /* ... */ })
+        }
+    }
 
     fun addMedicalRecord(medicalRecord: MedicalRecord): Task<Void> {
         return db.collection("medicalRecords")

@@ -1,6 +1,10 @@
 package vcmsa.projects.petcareapp.Data.Repositories
 
 import android.app.Activity
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import androidx.core.content.ContextCompat.getSystemService
 import com.facebook.AccessToken
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
@@ -11,7 +15,13 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.OAuthProvider
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.firestoreSettings
+import com.google.firebase.firestore.local.Persistence
+import com.google.firebase.firestore.memoryCacheSettings
+import com.google.firebase.firestore.persistentCacheSettings
+
 import kotlinx.coroutines.tasks.await
 import vcmsa.projects.petcareapp.Data.Models.User
 import kotlin.toString
@@ -20,10 +30,18 @@ import kotlin.toString
 class AuthRepository() {
     //vars for firebase
      val firebaseAuth = FirebaseAuth.getInstance()
-        val db = Firebase.firestore
+    //made it so the firestore can work offline with caching (Firebase, 2025):
+    val db = Firebase.firestore.apply {
+        firestoreSettings  = firestoreSettings {
+            //using the persistent caching setting (Firebase, 2025):
+            setLocalCacheSettings(persistentCacheSettings { /* ... */ })
+        }
+    }
+
     val users = db.collection("Users")
     // Register user with email and password (Firebase, 2025)
     suspend fun registerUser(fullName: String, email: String, password: String): Result<Unit> {
+
         return try {
             //getting the response from firebase (firebase, 2025):
             val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
@@ -57,7 +75,7 @@ class AuthRepository() {
     suspend fun signInUserFirebase(email: String, password: String): Result<Unit> {
         return try {
             //Signing in with firebase auth (Firebase, 2025):
-            firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
@@ -127,6 +145,10 @@ class AuthRepository() {
 }
 
 //reference list:
+
+//Developers. 2025. Manage network usage. [Online]. Available at: https://developer.android.com/develop/connectivity/network-ops/managing [Accessed 15 November 2025].
+
+//Firebase. 2025. Access data offline. [Online]. Available at: https://firebase.google.com/docs/firestore/manage-data/enable-offline [Accessed 14 November 2025].
 
 //Firebase. 2025. Authenticate with Google on Android. [Online]. Available at: https://firebase.google.com/docs/auth/android/google-signin [Accessed 27 September 2025].
 
