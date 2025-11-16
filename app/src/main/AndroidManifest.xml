@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetCareApp"
         tools:targetApi="35">
-        <activity
-            android:name=".UI.PetBehavior.PetBehaviorActivity"
-            android:exported="false" />
         <activity
             android:name=".UI.HealthRecord.AddMedicalInfoActivity"
             android:exported="false" />

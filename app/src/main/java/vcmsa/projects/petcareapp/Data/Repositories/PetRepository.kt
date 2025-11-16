@@ -7,7 +7,7 @@ import kotlinx.coroutines.tasks.await
 import vcmsa.projects.petcareapp.Data.Models.PetInfo
 
 class PetRepository {
-    private val firebaseAuth = FirebaseAuth.getInstance()
+    private val authRepository = AuthRepository();
     private val db = Firebase.firestore
     private val petsCollection = db.collection("pets")
     private val usersCollection = db.collection("Users")
@@ -15,7 +15,7 @@ class PetRepository {
     suspend fun addPet(petInfo: PetInfo): Result<Unit> {
         return try {
             //getting the current user (Firebase, 2025):
-            val currentUser = firebaseAuth.currentUser
+            val currentUser = authRepository.getCurrentUser()
             if (currentUser == null) {
                 return Result.failure(Exception("User not authenticated"))
             }
@@ -25,7 +25,7 @@ class PetRepository {
 
             // Create pet with owner ID and pet ID
             val petWithIds = petInfo.copy(
-                ownerId = currentUser.uid,
+                ownerId = currentUser.uID,
                 petId = petId
             )
 
@@ -33,7 +33,7 @@ class PetRepository {
             petsCollection.document(petId).set(petWithIds).await()
 
             // Also add reference to user's pets subcollection (Firebase, 2025):
-            usersCollection.document(currentUser.uid)
+            usersCollection.document(currentUser.uID)
                 .collection("user_pets")
                 .document(petId)
                 .set(mapOf("petId" to petId))
@@ -48,13 +48,13 @@ class PetRepository {
     suspend fun getUserPets(): Result<List<PetInfo>> {
         return try {
             //getting the current user (Firebase, 2025):
-            val currentUser = firebaseAuth.currentUser
+            val currentUser = authRepository.getCurrentUser()
             if (currentUser == null) {
                 return Result.failure(Exception("User not authenticated"))
             }
             //fetching all their pets with a dataSnapshot (Firebase, 2025):
             val querySnapshot = petsCollection
-                .whereEqualTo("ownerId", currentUser.uid)
+                .whereEqualTo("ownerId", currentUser.uID)
                 .get()
                 .await()
 
@@ -71,15 +71,15 @@ class PetRepository {
     suspend fun updatePet(petId: String, updatedPetInfo: PetInfo): Result<Unit> {
         return try {
             //getting the current firebase user (Firebase, 2025):
-            val currentUser = firebaseAuth.currentUser
+            val currentUser = authRepository.getCurrentUser()
             if (currentUser == null) {
                 return Result.failure(Exception("User not authenticated"))
             }
 
             // Verify the pet belongs to current user (Firebase, 2025):
             val petDoc = petsCollection.document(petId).get().await()
-            if (petDoc.exists() && petDoc.get("ownerId") == currentUser.uid) {
-                petsCollection.document(petId).set(updatedPetInfo.copy(petId = petId, ownerId = currentUser.uid)).await()
+            if (petDoc.exists() && petDoc.get("ownerId") == currentUser.uID) {
+                petsCollection.document(petId).set(updatedPetInfo.copy(petId = petId, ownerId = currentUser.uID)).await()
                 Result.success(Unit)
             } else {
                 Result.failure(Exception("Pet not found or access denied"))

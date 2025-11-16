@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import vcmsa.projects.petcareapp.Data.Models.PetInfo
 import vcmsa.projects.petcareapp.UI.Home.HomeActivity
 import vcmsa.projects.petcareapp.databinding.ActivityAddPetsBinding
+import vcmsa.projects.petcareapp.services.NotificationHelper
 
 class AddPetsActivity : AppCompatActivity() {
 
@@ -23,19 +24,44 @@ class AddPetsActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            binding.savePetButton.setOnClickListener {
+        binding.savePetButton.setOnClickListener {
+            val petName = binding.addPetName.text.toString().trim()
+            val petType = binding.addPetType.text.toString().trim()
+            val petAge = binding.addPetAge.text.toString().trim()
+            val petColour = binding.addPetColour.text.toString().trim()
+            val petHeight = binding.addPetHeight.text.toString().trim()
+            val petWeight = binding.addPetWeight.text.toString().trim()
+
+
+            addPetViewModel.addPet(petName, petType, petAge, petColour, petHeight, petWeight)
+        }
+
+// message for successfully adding the pet
+        addPetViewModel.successMsg.observe(this) { message ->
+            if (!message.isNullOrEmpty()) {
+
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+
+                // Send notification now — use pet name from the form
                 val petName = binding.addPetName.text.toString().trim()
-                val petType = binding.addPetType.text.toString().trim()
-                val petAge = binding.addPetAge.text.toString().trim()
-                val petColour = binding.addPetColour.text.toString().trim()
-                val petHeight = binding.addPetHeight.text.toString().trim()
-                val petWeight = binding.addPetWeight.text.toString().trim()
+                val nid = petName.hashCode() // unique notification id per pet name
+                NotificationHelper.notifyNow(
+                    this,
+                    id = nid,
+                    title = "New Pet Added!",
+                    body = "$petName has been added to your PetCare profile.",
+                    useRemindersChannel = false, // correct param name
+                    petName = petName
+                )
 
-
-                addPetViewModel.addPet(petName,petType,petAge,petColour,petHeight,petWeight)
-
+                // Navigate to Home
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
             }
-            //message for successfully adding the pet
+        }
+
+        //message for successfully adding the pet
             addPetViewModel.successMsg.observe(this) { message ->
                 if (!message.isNullOrEmpty()) {
                     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
