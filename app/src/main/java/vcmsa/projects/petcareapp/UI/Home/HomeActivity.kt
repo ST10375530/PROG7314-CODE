@@ -16,6 +16,7 @@ import vcmsa.projects.petcareapp.UI.Profile.ProfileActivity
 import vcmsa.projects.petcareapp.UI.AddPets.AddPetsActivity
 import vcmsa.projects.petcareapp.UI.HealthRecord.HealthRecords
 import vcmsa.projects.petcareapp.UI.Main.MainActivity
+import vcmsa.projects.petcareapp.UI.PetBehavior.PetBehaviorActivity
 import vcmsa.projects.petcareapp.UI.Settings.SettingsActivity
 import vcmsa.projects.petcareapp.UI.Vets.VetsActivity
 import vcmsa.projects.petcareapp.databinding.ActivityHomeBinding
@@ -101,9 +102,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.hDiscoverNavItem.setOnClickListener {
-            Toast.makeText(this,"Coming soon", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, PetBehaviorActivity::class.java)
+            startActivity(intent)
         }
-
         binding.settingsButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)

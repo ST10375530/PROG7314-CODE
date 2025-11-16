@@ -428,8 +428,8 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:contentDescription="@string/discover"
-                    android:src="@drawable/ic_compass"
+                    android:contentDescription="@string/behavior"
+                    android:src="@drawable/baseline_pets_24"
                     app:tint="@color/white" />
 
                 <TextView
@@ -437,7 +437,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="@string/discover"
+                    android:text="@string/behavior"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>

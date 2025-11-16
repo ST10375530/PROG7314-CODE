@@ -16,4 +16,13 @@
     <item name="noVaccinationsText" type="id" />
     <item name="vaccinationName" type="id" />
     <item name="vaccinationDate" type="id" />
+    <item name="messageInput" type="id" />
+    <item name="sendButton" type="id" />
+    <item name="chatContainer" type="id" />
+    <item name="chatScrollView" type="id" />
+    <item name="loadingProgress" type="id" />
+    <item name="hintText" type="id" />
+    <item name="hintSection" type="id" />
+    <item name="inputLayout" type="id" />
+    <item name="HomeNavItem" type="id" />
 </resources>

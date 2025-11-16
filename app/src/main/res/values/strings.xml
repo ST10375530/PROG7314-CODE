@@ -83,4 +83,5 @@
     <string name="settings" />
     <string name="health_records" />
     <string name="health_icon">HEALTH</string>
+    <string name="behavior">BEHAVIOR TOOL</string>
 </resources>
