@@ -11,7 +11,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.firestoreSettings
+import com.google.firebase.firestore.persistentCacheSettings
 import vcmsa.projects.petcareapp.R
 import java.util.*
 
@@ -25,7 +29,13 @@ class AddMedicalInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_medical_info)
 
         // Initialize Firestore (Firebase, 2025):
-        db = FirebaseFirestore.getInstance()
+        //made it so the firestore can work offline with caching (Firebase, 2025):
+        db = Firebase.firestore.apply {
+            firestoreSettings  = firestoreSettings {
+                //using the persistent caching setting (Firebase, 2025):
+                setLocalCacheSettings(persistentCacheSettings { /* ... */ })
+            }
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
