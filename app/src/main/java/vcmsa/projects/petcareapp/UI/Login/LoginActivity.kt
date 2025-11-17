@@ -2,19 +2,18 @@ package vcmsa.projects.petcareapp.UI.Login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.FacebookSdk
-import com.facebook.appevents.AppEventsLogger
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.OAuthProvider
+import kotlinx.coroutines.launch
+import vcmsa.projects.petcareapp.Data.Network.AndroidConnectivityObserver
 import vcmsa.projects.petcareapp.R
 import vcmsa.projects.petcareapp.UI.Register.RegisterActivity
 import vcmsa.projects.petcareapp.UI.Home.HomeActivity
@@ -27,11 +26,24 @@ class LoginActivity : AppCompatActivity() {
     companion object {
         private const val RC_GOOGLE_SIGN_IN = 9001
     }
-
-    private val loginViewModel = LoginViewModel()
+    //creating the new instance of the viewmodel (Lackner, 2024):
+    private val loginViewModel: LoginViewModel by viewModels {
+        LoginViewModelFactory(
+            AndroidConnectivityObserver(this)
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                loginViewModel.isConnected.collect { connected ->
+                    if(connected != null) {
+                        handleConnectivity(connected)
+                    }
+                }
+            }
+        }
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -78,7 +90,15 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        private fun handleConnectivity(isConnected: Boolean) {
+            if (!isConnected) {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show()
+            } else {
+                Log.d("Connectivity", "Online")
+            }
+        }
+
+        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_GOOGLE_SIGN_IN) {
@@ -98,3 +118,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
+
+//reference list:
+
+// Lackner, P. 2024. How to Observe the REAL Internet Connectivity - Android Studio Kotlin Tutorial. [video online] Available at: https://www.youtube.com/watch?v=wvDPG2iQ-OE [Accessed 17 november 2025].

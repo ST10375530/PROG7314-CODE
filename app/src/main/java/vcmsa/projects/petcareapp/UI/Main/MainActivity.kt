@@ -2,6 +2,7 @@ package vcmsa.projects.petcareapp.UI.Main
 
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +14,7 @@ import vcmsa.projects.petcareapp.R
 import vcmsa.projects.petcareapp.services.NotificationHelper
 import vcmsa.projects.petcareapp.services.AlarmScheduler
 import vcmsa.projects.petcareapp.UI.AddPets.AddPetsActivity
+import vcmsa.projects.petcareapp.UI.Welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,41 +61,46 @@ class MainActivity : AppCompatActivity() {
         // Ask permission BEFORE sending notifications
         ensureNotificationPermission()
 
-        // IMMEDIATE notification
-        findViewById<Button>(R.id.save_pet_button)?.setOnClickListener {
-            NotificationHelper.notifyNow(
-                this,
-                100,
-                "Hello from PetCare",
-                "Welcome back to PetCare!",
-                false
-            )
+//        // IMMEDIATE notification
+//        findViewById<Button>(R.id.save_pet_button)?.setOnClickListener {
+//            NotificationHelper.notifyNow(
+//                this,
+//                100,
+//                "Hello from PetCare",
+//                "Welcome back to PetCare!",
+//                false
+//            )
+//        }
+        val btnGetStarted = findViewById<Button>(R.id.get_started_button)
+        btnGetStarted.setOnClickListener {
+            val intent: Intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
         }
 
         // ONE-TIME notification (2 minutes later)
-        findViewById<Button>(R.id.btnScheduleOneTime)?.setOnClickListener {
-            val triggerAt = System.currentTimeMillis() + (2 * 60 * 1000)
-            AlarmScheduler.scheduleOneTime(
-                this,
-                id = 200,
-                triggerAtMillis = triggerAt,
-                title = "Vet appointment",
-                body = "Vet appointment in 2 minutes!",
-                useRemindersChannel = true
-            )
-        }
+//        findViewById<Button>(R.id.btnScheduleOneTime)?.setOnClickListener {
+//            val triggerAt = System.currentTimeMillis() + (2 * 60 * 1000)
+//            AlarmScheduler.scheduleOneTime(
+//                this,
+//                id = 200,
+//                triggerAtMillis = triggerAt,
+//                title = "Vet appointment",
+//                body = "Vet appointment in 2 minutes!",
+//                useRemindersChannel = true
+//            )
+//        }
 
-        // DAILY repeating notification @ 08:00
-        findViewById<Button>(R.id.btnScheduleDaily)?.setOnClickListener {
-            AlarmScheduler.scheduleRepeatingDailyAt(
-                this,
-                id = 300,
-                hour = 12,
-                minute = 0,
-                title = "Medicine time",
-                body = "Give your pet its morning medicine.",
-                useRemindersChannel = true
-            )
-        }
+//        // DAILY repeating notification @ 08:00
+//        findViewById<Button>(R.id.btnScheduleDaily)?.setOnClickListener {
+//            AlarmScheduler.scheduleRepeatingDailyAt(
+//                this,
+//                id = 300,
+//                hour = 12,
+//                minute = 0,
+//                title = "Medicine time",
+//                body = "Give your pet its morning medicine.",
+//                useRemindersChannel = true
+//            )
+//        }
     }
 }
