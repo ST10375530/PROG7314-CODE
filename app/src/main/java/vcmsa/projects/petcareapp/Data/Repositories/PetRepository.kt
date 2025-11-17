@@ -25,7 +25,7 @@ class PetRepository {
 
             // Create pet with owner ID and pet ID
             val petWithIds = petInfo.copy(
-                ownerId = currentUser.uID,
+                ownerId = currentUser.uid,
                 petId = petId
             )
 
@@ -33,7 +33,7 @@ class PetRepository {
             petsCollection.document(petId).set(petWithIds).await()
 
             // Also add reference to user's pets subcollection (Firebase, 2025):
-            usersCollection.document(currentUser.uID)
+            usersCollection.document(currentUser.uid)
                 .collection("user_pets")
                 .document(petId)
                 .set(mapOf("petId" to petId))
@@ -54,7 +54,7 @@ class PetRepository {
             }
             //fetching all their pets with a dataSnapshot (Firebase, 2025):
             val querySnapshot = petsCollection
-                .whereEqualTo("ownerId", currentUser.uID)
+                .whereEqualTo("ownerId", currentUser.uid)
                 .get()
                 .await()
 
@@ -78,8 +78,8 @@ class PetRepository {
 
             // Verify the pet belongs to current user (Firebase, 2025):
             val petDoc = petsCollection.document(petId).get().await()
-            if (petDoc.exists() && petDoc.get("ownerId") == currentUser.uID) {
-                petsCollection.document(petId).set(updatedPetInfo.copy(petId = petId, ownerId = currentUser.uID)).await()
+            if (petDoc.exists() && petDoc.get("ownerId") == currentUser.uid) {
+                petsCollection.document(petId).set(updatedPetInfo.copy(petId = petId, ownerId = currentUser.uid)).await()
                 Result.success(Unit)
             } else {
                 Result.failure(Exception("Pet not found or access denied"))

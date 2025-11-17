@@ -5,7 +5,6 @@ plugins {
     id("kotlin-kapt")
     alias(libs.plugins.google.services)
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.0"
-
 }
 
 android {
@@ -63,6 +62,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     //firebase
     implementation(libs.google.firebase.auth)
+
     implementation(libs.google.firebase.firestore)
     //google + facebook
     implementation(libs.play.services.identity)
@@ -72,4 +72,6 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     //serilization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    //Bcrypt - kotlin
+    implementation("at.favre.lib:bcrypt:0.10.2")
 }

@@ -1,15 +1,18 @@
 package vcmsa.projects.petcareapp.Data.Repositories
 
+import android.util.Log
+import at.favre.lib.crypto.bcrypt.BCrypt
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.firestoreSettings
 import com.google.firebase.firestore.persistentCacheSettings
 import kotlinx.coroutines.tasks.await
 import vcmsa.projects.petcareapp.Data.Models.User
-import kotlin.toString
+
 
 
 class AuthRepository() {
@@ -22,11 +25,9 @@ class AuthRepository() {
             setLocalCacheSettings(persistentCacheSettings { /* ... */ })
         }
     }
-
     val users = db.collection("Users")
     // Register user with email and password (Firebase, 2025)
     suspend fun registerUser(fullName: String, email: String, password: String): Result<Unit> {
-
         return try {
             //getting the response from firebase (firebase, 2025):
             val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
@@ -40,11 +41,11 @@ class AuthRepository() {
 
             // Create new user object
             val newUser = User(
-                uID = user!!.uid,
+                uid = user!!.uid,
                 fullname = fullName,
-                email = email
+                email = email,
+                passwordHash = hashPassword(password).toString()
             )
-
             // Store the user in Firestore  (Firebase, 2025):
             users.document(user.uid).set(newUser).await()
             //sending verification email
@@ -61,6 +62,9 @@ class AuthRepository() {
         return try {
             //Signing in with firebase auth (Firebase, 2025):
             val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            val uID = firebaseAuth.currentUser?.uid ?: throw Exception("User ID is null")
+            // Firestore will automatically cache this fresh data
+            val test = users.document(uID).get().await()
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
@@ -82,10 +86,10 @@ class AuthRepository() {
                 //sending verification email
                 user.sendEmailVerification()
                 if (isNewUser) {
-                    // First-time sign-up with Google (Firebase, 2025):
+                    //first-time sign-up with Google (Firebase, 2025):
                     val displayName = user.displayName ?: user.email?.substringBefore("@") ?: "User"
 
-                    // Update profile if display name is empty
+                    //update profile if display name is empty
                     if (user.displayName.isNullOrEmpty()) {
                         user.updateProfile(
                             UserProfileChangeRequest.Builder()
@@ -94,16 +98,17 @@ class AuthRepository() {
                         ).await()
                     }
 
-                    // Create and store user (Firebase, 2025):
+                    //create and store user (Firebase, 2025):
                     val newUser = User(
-                        uID= user.uid,
+                        uid= user.uid,
                         fullname = displayName,
-                        email = user.email ?: ""
+                        email = user.email ?: "",
+                        passwordHash = ""
                     )
                    //storing with firestore (Firebase, 2025):
                     users.document(user.uid).set(newUser).await()
                 }
-                // Existing users will already have their data in Firestore
+                //existing users will already have their data in Firestore
             }
             Result.success(Unit)
         } catch (e: Exception) {
@@ -119,7 +124,8 @@ class AuthRepository() {
             val user = User(
                 logUser.uid,
                 logUser.displayName ,
-                logUser.email
+                logUser.email,
+                passwordHash = ""
             )
             return user
         }
@@ -127,6 +133,56 @@ class AuthRepository() {
             return null
         }
     }
+    fun verifyPassword(password: String, hashed: String?): Boolean {
+        //null check for the hash
+        if (hashed.isNullOrBlank()) return false
+
+        return try {
+            val result = BCrypt.verifyer().verify(password.toCharArray(), hashed)
+            result.verified
+        } catch (e: Exception) {
+            Log.e("PasswordVerify", "Error verifying password", e)
+            false
+        }
+    }
+    suspend fun offlineLogin(email: String, password: String): Boolean {
+        return try {
+            val snapshot = users
+                .whereEqualTo("email", email)
+                .get(Source.CACHE)
+                .await()
+
+            if (snapshot.isEmpty) {
+                Log.d("OfflineLogin", "No user found in cache for email: $email")
+                return false
+            }
+            val document = snapshot.documents.first()
+            Log.d("OfflineLogin", "Document data: ${document.data}")
+            Log.d("OfflineLogin", "Document ID: ${document.id}")
+
+            // Try to convert to User object
+            val user = document.toObject(User::class.java)
+            if (user != null && verifyPassword(password, user.passwordHash)) {
+                Log.d("OfflineLogin", "User found, hash present: ${!user.passwordHash.isNullOrBlank()}")
+                true
+            } else {
+                Log.d("OfflineLogin", "User object is null")
+                false
+            }
+        } catch (e: Exception) {
+            Log.e("OfflineLogin", "Error during offline login", e)
+            false
+        }
+    }
+    fun hashPassword(password: String?): String? {
+        if(password != null) {
+            return BCrypt.withDefaults().hashToString(12, password.toCharArray())
+        }
+        else{
+            return ""
+        }
+    }
+
 }
 
 //reference list:

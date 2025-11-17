@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.facebook.AccessToken
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import vcmsa.projects.petcareapp.Data.Network.ConnectivityObserver
@@ -31,13 +32,27 @@ class LoginViewModel(private val connectivityObserver: ConnectivityObserver) : V
     {
         viewModelScope.launch {
             try{
-                val result = _authRepo.signInUserFirebase(email,password)
-                if(result.isSuccess)
-                {
-                    successMessage.postValue("sign-in successful with firebase!")
-                }
-                else{
-                    errorMessage.postValue("Incorrect username or password!")
+                isConnected.collect { connect ->
+                    if (connect == true) {
+                        val result = _authRepo.signInUserFirebase(email, password)
+                        if (result.isSuccess) {
+                            successMessage.postValue("sign-in successful with firebase!")
+                        } else {
+                            errorMessage.postValue("Incorrect username or password!")
+                        }
+                    }
+                    else if(connect == false){
+                        val result = _authRepo.offlineLogin(email,password)
+                        Log.d("Offline Login", "Started Recieved: " + email +" " +password)
+                        if(result == true)
+                        {
+                            successMessage.postValue("Offline Sign-in successful!")
+                        }
+                        else
+                        {
+                            errorMessage.postValue("User/password incorrect or you haven't signed into this account online before!")
+                        }
+                    }
                 }
             }
             catch(e: Exception)

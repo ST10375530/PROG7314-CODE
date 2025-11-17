@@ -96,6 +96,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.locationsSection
         binding.profileNavItem.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)

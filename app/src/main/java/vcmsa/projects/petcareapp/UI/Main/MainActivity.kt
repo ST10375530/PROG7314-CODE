@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import vcmsa.projects.petcareapp.R
 import vcmsa.projects.petcareapp.services.NotificationHelper
-import vcmsa.projects.petcareapp.services.AlarmScheduler
-import vcmsa.projects.petcareapp.UI.AddPets.AddPetsActivity
+//import vcmsa.projects.petcareapp.services.AlarmScheduler
+//import vcmsa.projects.petcareapp.UI.AddPets.AddPetsActivity
 import vcmsa.projects.petcareapp.UI.Welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
