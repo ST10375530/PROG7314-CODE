@@ -1,5 +1,5 @@
 # PROGRAMMING 3D [PROG7314]
-## POE Part 2 – README
+## POE – README
 
 ---
 ## Youtube video Link:
@@ -18,13 +18,15 @@ https://petnest-api.onrender.com/
 ---
 ## Project Overview
 
-**PetNest** is a mobile application prototype designed to assist pet owners in managing their pets’ health and wellness.  
+**PetNest** is a mobile application designed to assist pet owners in managing their pets’ health and wellness.  
 The app provides a centralized platform where users can:
 
 - Create pet profiles  
 - Track important health information  
 - Search for medication details  
 - Receive dosage recommendations based on their pet’s weight and type  
+- Find nearest pet related places
+- Ask AI questions related to pets
 
 ### Main Goals of PetNest
 
