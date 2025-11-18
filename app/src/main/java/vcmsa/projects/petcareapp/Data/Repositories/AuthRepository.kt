@@ -48,7 +48,7 @@ class AuthRepository() {
                 email = email,
                 passwordHash = hashPassword(password).toString()
             )
-            // Store the user in Firestore  (Firebase, 2025):
+            //store the user in Firestore  (Firebase, 2025):
             users.document(user.uid).set(newUser).await()
             //sending verification email
             user.sendEmailVerification()
@@ -109,6 +109,7 @@ class AuthRepository() {
                     )
                 }
                 //existing users will already have their data in Firestore
+                //hence end of method
             }
             Result.success(Unit)
         } catch (e: Exception) {
@@ -119,6 +120,7 @@ class AuthRepository() {
     //fun to get current user (Firebase, 2025):
     fun getCurrentUser(): User?
     {
+        //accessing the current user thats logged in with firebase auth (Firebase, 2025):
         val logUser = firebaseAuth.currentUser
         if(logUser != null) {
             val user = User(
@@ -130,10 +132,11 @@ class AuthRepository() {
             return user
         }
         else if (OfflineUserManager.currentOfflineUser != null){
-            // Fall back to our offline user
+            //fall back to our offline user if its not null
             return OfflineUserManager.currentOfflineUser
         }
         else{
+            //if this is reached it means users doesn't exist and they gained access in a wrong format
             return null
         }
     }
@@ -145,42 +148,48 @@ class AuthRepository() {
             val result = BCrypt.verifyer().verify(password.toCharArray(), hashed)
             result.verified
         } catch (e: Exception) {
-            Log.e("PasswordVerify", "Error verifying password", e)
+//            Log.e("PasswordVerify", "Error verifying password", e)
             false
         }
     }
     suspend fun offlineLogin(email: String, password: String): Boolean {
         return try {
+            //fetching user data
             val snapshot = users
                 .whereEqualTo("email", email)
+                //this tells firestore to go straight to cache search instead of trying to access from server (Firebase, 2025):
                 .get(Source.CACHE)
                 .await()
 
             if (snapshot.isEmpty) {
-                Log.d("OfflineLogin", "No user found in cache for email: $email")
+//                Log.d("OfflineLogin", "No user found in cache for email: $email")
                 return false
             }
             val document = snapshot.documents.first()
-            Log.d("OfflineLogin", "Document data: ${document.data}")
-            Log.d("OfflineLogin", "Document ID: ${document.id}")
+            //debugging logs - commented out cause app wont be in development anymore
+//            Log.d("OfflineLogin", "Document data: ${//document.data}")
+//            Log.d("OfflineLogin", "Document ID: ${document.id}")
 
-            // Try to convert to User object
+            //try to convert to User object
             val user = document.toObject(User::class.java)
             if (user != null && verifyPassword(password, user.passwordHash)) {
                 OfflineUserManager.currentOfflineUser = user
-                Log.d("OfflineLogin", "User found, hash present: ${!user.passwordHash.isNullOrBlank()}")
+                //debugging logs - commented out cause app wont be in development anymore
+//                Log.d("OfflineLogin", "User found, hash present: ${!user.passwordHash.isNullOrBlank()}")
                 true
             } else {
-                Log.d("OfflineLogin", "User object is null")
+//                Log.e("OfflineLogin", "User object is null")
                 false
             }
         } catch (e: Exception) {
-            Log.e("OfflineLogin", "Error during offline login", e)
+
+//            Log.e("OfflineLogin", "Error during offline login", e)
             false
         }
     }
     fun hashPassword(password: String?): String? {
         if(password != null) {
+            //hashing the password using BCrypt (MobileMasters: Android & iOS Development Unleashed, 2023):
             return BCrypt.withDefaults().hashToString(12, password.toCharArray())
         }
         else{
@@ -201,3 +210,5 @@ class AuthRepository() {
 //Firebase. 2025. Get started with Cloud Firestore. [Online]. Available at: https://firebase.google.com/docs/firestore/quickstart [Accessed 27 September 2025].
 
 //Firebase. 2025. Manage Users in Firebase. [Online]. Available at: https://firebase.google.com/docs/auth/android/manage-users#get_a_users_profile [Accessed 27 September 2025]
+
+//MobileMasters: Android & iOS Development Unleashed. 2025. Bcrypt - How to hash password and verify - Android programming Kotlin.[video online] Available at: https://www.youtube.com/watch?v=BAg3mlbIduA [Accessed 17 November 2025].
