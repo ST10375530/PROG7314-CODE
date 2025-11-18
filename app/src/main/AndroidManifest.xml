@@ -14,6 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetCareApp"
         tools:targetApi="35">
+        <activity android:name=".UI.Explore.ExploreActivity"
+            android:exported="false"/>
+        <activity android:name=".UI.Vets.VetsActivity"
+            android:exported="false"/>
+        <activity android:name=".UI.Parks.ParksActivity"
+            android:exported="false"/>
+        <activity android:name=".UI.PetStores.PetStoresActivity"
+            android:exported="false"/>
+        <activity android:name=".UI.PetBehavior.PetBehaviorActivity"
+            android:exported="false"/>
         <activity
             android:name=".UI.HealthRecord.AddMedicalInfoActivity"
             android:exported="false" />

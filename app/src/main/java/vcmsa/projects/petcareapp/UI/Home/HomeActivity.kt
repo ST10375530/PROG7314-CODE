@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import vcmsa.projects.petcareapp.Data.Models.PetInfo
 import vcmsa.projects.petcareapp.UI.Profile.ProfileActivity
 import vcmsa.projects.petcareapp.UI.AddPets.AddPetsActivity
+import vcmsa.projects.petcareapp.UI.Explore.ExploreActivity
 import vcmsa.projects.petcareapp.UI.HealthRecord.HealthRecords
 import vcmsa.projects.petcareapp.UI.Main.MainActivity
 import vcmsa.projects.petcareapp.UI.PetBehavior.PetBehaviorActivity
@@ -101,7 +102,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
-
+        binding.Explore.setOnClickListener {
+            val intent = Intent(this, ExploreActivity::class.java)
+            startActivity(intent)
+        }
         binding.hDiscoverNavItem.setOnClickListener {
             val intent = Intent(this, PetBehaviorActivity::class.java)
             startActivity(intent)
