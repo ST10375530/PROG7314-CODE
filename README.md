@@ -53,7 +53,7 @@ The app must also demonstrate **SSO login**, **settings management**, and select
   - Biometrics for security
   - Offline capabilities (Where applicable)
   - Multi-langauge (attempted not functioning atm)
-  - notifications to remind the user when appoints are for pets or food/medicine reminders
+  - notifications to remind the user when appointments are for pets or food/medicine reminders
 ---
 
 ## API Implementation Summary
