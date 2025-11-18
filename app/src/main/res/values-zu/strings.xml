@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string name="english">IsiNgisi</string>
+        <string name="french">IsiFulentshi</string>
+        <string name="afrikaans">IsiBhunu</string>
+        <string name="facebook_app_id">961255812884002</string>
+        <string name="app_name">PetNest</string>
+        <string name="petnest_logo_description">Ilogo ye-PetNest</string>
+        <string name="tagline">Khanjiswe ngothando, kumile ekunakekeleni</string>
+        <string name="get_started">QALA</string>
+        <string name="cat_description">Ikati</string>
+        <string name="rabbit_description">Unogwaja</string>
+        <string name="welcome_message">Sawubona! Wamukelekile</string>
+        <string name="welcome_tagline">ngenkathi uhlezi uphumule - thina sizodlala ngaphandle</string>
+        <string name="welcome2_message">Manje!</string>
+        <string name="welcome2_tagline1">Ukuthofa okukodwa ukuqapha impilo yesilwane, nokuthola amaVeterinary Clinic akuso eduze</string>
+        <string name="welcome2_tagline2">Ukubhuka ukweluleka okulula nokuhle kakhulu</string>
+        <string name="welcome3_message">Sinikeza</string>
+        <string name="welcome3_tagline">Ukulandelela indawo nama-24Hrs kanye nezibuyekezo zempilo</string>
+        <string name="next">Olandelayo</string>
+        <string name="login_to_your_account">Ngena ngemvume kwi-akhawunti yakho</string>
+        <string name="email_address">Ikheli Le-imeyili</string>
+        <string name="password">Iphasiwedi</string>
+        <string name="login">Ngena ngemvume</string>
+        <string name="no_account">Awunawo i-akhawunti?</string>
+        <string name="register">Bhalisa</string>
+        <string name="or_connect_with">noma xhuma na-</string>
+        <string name="login_with_facebook">Ngena nge-Facebook</string>
+        <string name="login_with_apple">Ngena nge-Apple</string>
+        <string name="login_with_google">Ngena nge-Google</string>
+        <string name="register_with_facebook">Ngena nge-Facebook</string>
+        <string name="register_with_apple">Ngena nge-Apple</string>
+        <string name="register_with_google">Ngena nge-Google</string>
+        <string name="create_a_new_account">Yakha i-akhawunti entsha</string>
+        <string name="first_name">Igama</string>
+        <string name="last_name">Isibongo</string>
+        <string name="confirm_password">Qinisekisa Iphasiwedi</string>
+        <string name="already_have_an_account">Sekakhe unayo i-akhawunti?</string>
+        <string name="my_pets">Izilwane Zami</string>
+        <string name="vet_locations">Izindawo Zokwelapha Izilwane</string>
+        <string name="pet_status">Isimo Sesilwane</string>
+        <string name="check_pets">Hlola Izilwane</string>
+        <string name="home">IKHAYA</string>
+        <string name="discover">THOLA</string>
+        <string name="explore">HLOLA</string>
+        <string name="manage">LAWULA</string>
+        <string name="profile">IPHROFAYILI</string>
+        <string name="dog_icon_description">Isithonjana Senja</string>
+        <string name="bella_name">Bella</string>
+        <string name="roudy_name">Roudy</string>
+        <string name="furry_name">Furry</string>
+        <string name="map_description">Imephu enezindawo zokwelapha izilwane</string>
+        <string name="health">Impilo</string>
+        <string name="food">Ukudla</string>
+        <string name="mood">Umoya</string>
+        <string name="sign_out">Phuma</string>
+        <string name="dog_face_photo_description">Isithombe sobuso benja</string>
+        <string name="portrait_photo_description">Isithombe sobuso</string>
+        <string name="about_me">Mayelana nami</string>
+        <string name="my_address">Ikheli Lami</string>
+        <string name="add_pet">Engeza Isilwane</string>
+        <string name="add_device">Engeza Idivaysi</string>
+        <string name="border_collie_dog_description">Inja ye-Border Collie</string>
+        <string name="border_collie_breed">I-Border Collie</string>
+        <string name="age">Iminyaka</string>
+        <string name="weight">Isisindo</string>
+        <string name="sex">Ubulili</string>
+        <string name="female">Owesifazane</string>
+        <string name="about_bella">Mayelana noBella</string>
+        <string name="bella_description">UBella uyinja edlalayo kakhulu nezinamandla ye-Border Collie. Uyathanda ukugijima epaki nokudlala i-fetch. Uziphathe kahle futhi uyathanda uku-gcugcuthelana.</string>
+        <string name="health_status">Isimo Sezempilo</string>
+        <string name="view_full_profile">Buka Iphrofayili Egcwele</string>
+        <string name="add_new_pet">Engeza Isilwane Esisha</string>
+        <string name="add_pet_photo">Engeza Isithombe Sesilwane</string>
+        <string name="pet_name">Igama Lesilwane</string>
+        <string name="breed">Uhlobo</string>
+        <string name="weight_kg">Isisindo (kg)</string>
+        <string name="save_pet">Londoloza Isilwane</string>
+        <string name="back_button">Emuva</string>
+        <string name="phone_number">Inombolo Yomnikazi</string>
+        <string name="owner_icon_description">Isithonjana Somnikazi</string>
+        <string name="app_logo_description">Ilogo ye-Petnest</string>
+        <string name="doctor_description">isithombe sodokotela</string>
+        <string name="default_web_client_id">751956835634-npmcupho20qvntoot0h13p8ik2of0ag7.apps.googleusercontent.com</string>
+        <string name="back">Emuva</string>
+        <string name="settings">Izilungiselelo</string>
+        <string name="health_records">Amarekhodi Ezempilo</string>
+        <string name="health_icon">IMPILO</string>
+        <string name="behavior">ITHULUZI LOKUZIPHATHA</string>
+</resources>
+
+    <!--
+    Reference list:
+
+    Phillipp Lackner. 2023. THIS Is How EASILY Transalte Your App. [video online] Available at: https://www.youtube.com/shorts/NipoeURcxwI [Accessed 18 November 2025].
+    -->

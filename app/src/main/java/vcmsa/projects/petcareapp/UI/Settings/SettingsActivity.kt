@@ -30,7 +30,6 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // Check if user is already authenticated for this session
         if (!isAuthenticated) {
-
             authenticateUser()
             return
         }

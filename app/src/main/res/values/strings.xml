@@ -1,10 +1,13 @@
 <resources>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="afrikaans">Afrikaans</string>
     <string name="facebook_app_id">961255812884002</string>
     <string name="app_name">PetNest</string>
     <string name="petnest_logo_description">PetNest Logo</string>
     <string name="tagline">Nested in love, rooted in care</string>
     <string name="get_started">GET STARTED</string>
-    <string name="golden_retriever_puppy_description">Golden Retriever</string>
+    <string name="golden_retriever_puppy_description" translatable="false">Golden Retriever</string>
     <string name="cat_description">Cat</string>
     <string name="rabbit_description">Rabbit</string>
     <string name="welcome_message">Hey! Welcome</string>
@@ -78,7 +81,7 @@
     <string name="owner_icon_description">Owner Icon</string>
     <string name="app_logo_description">Petnest Logo</string>
     <string name="doctor_description">doctor image</string>
-    <string name="default_web_client_id">751956835634-npmcupho20qvntoot0h13p8ik2of0ag7.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">751956835634-npmcupho20qvntoot0h13p8ik2of0ag7.apps.googleusercontent.com</string>
     <string name="back" />
     <string name="settings" />
     <string name="health_records" />

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="english">Engels</string>
+    <string name="french">Frans</string>
+    <string name="afrikaans">Afrikaans</string>
+    <string name="facebook_app_id">961255812884002</string>
+    <string name="app_name">PetNest</string>
+    <string name="petnest_logo_description">PetNest Logo</string>
+    <string name="tagline">Genestel in liefde, gewortel in sorg</string>
+    <string name="get_started">BEGIN</string>
+    <string name="golden_retriever_puppy_description">Golden Retriever</string>
+    <string name="cat_description">Kat</string>
+    <string name="rabbit_description">Haas</string>
+    <string name="welcome_message">Hallo! Welkom</string>
+    <string name="welcome_tagline">terwyl jy sit en bly - sal ons uitgaan en speel</string>
+    <string name="welcome2_message">Nou!</string>
+    <string name="welcome2_tagline1">Een druk vir troeteldiergesondheidsmonitering, en om jou naaste Veearts Klinieke te vind</string>
+    <string name="welcome2_tagline2">Maklike en beste konsultasie besprekings</string>
+    <string name="welcome3_message">Ons bied</string>
+    <string name="welcome3_tagline">24Uur ligging opvolging en gesondheid opdaterings</string>
+    <string name="next">Volgende</string>
+    <string name="login_to_your_account">Teken in op jou rekening</string>
+    <string name="email_address">E-pos Adres</string>
+    <string name="password">Wagwoord</string>
+    <string name="login">TEKEN IN</string>
+    <string name="no_account">Geen Rekening?</string>
+    <string name="register">Registreer</string>
+    <string name="or_connect_with">of verbind met</string>
+    <string name="login_with_facebook">Teken in met Facebook</string>
+    <string name="login_with_apple">Teken in met Apple</string>
+    <string name="login_with_google">Teken in met Google</string>
+    <string name="register_with_facebook">Teken in met Facebook</string>
+    <string name="register_with_apple">Teken in met Apple</string>
+    <string name="register_with_google">Teken in met Google</string>
+    <string name="create_a_new_account">Skep \'n nuwe rekening</string>
+    <string name="first_name">Eerste Naam</string>
+    <string name="last_name">Van</string>
+    <string name="confirm_password">Bevestig Wagwoord</string>
+    <string name="already_have_an_account">Het jy reeds \'n rekening?</string>
+    <string name="my_pets">My Troeteldiere</string>
+    <string name="vet_locations">Veearts Liggings</string>
+    <string name="pet_status">Troeteldier Status</string>
+    <string name="check_pets">Kontroleer Troeteldiere</string>
+    <string name="home">TUIS</string>
+    <string name="discover">ONTDEK</string>
+    <string name="explore">VERKEN</string>
+    <string name="manage">BESTUUR</string>
+    <string name="profile">PROFIEL</string>
+    <string name="dog_icon_description">Hond Ikoon</string>
+    <string name="bella_name">Bella</string>
+    <string name="roudy_name">Roudy</string>
+    <string name="furry_name">Furry</string>
+    <string name="map_description">Kaart met veearts liggings</string>
+    <string name="health">Gesondheid</string>
+    <string name="food">Kos</string>
+    <string name="mood">Humeur</string>
+    <string name="sign_out">Teken uit</string>
+    <string name="dog_face_photo_description">Hond gesig foto</string>
+    <string name="portrait_photo_description">Portret foto</string>
+    <string name="about_me">Oor my</string>
+    <string name="my_address">My Adres</string>
+    <string name="add_pet">Voeg Troeteldier by</string>
+    <string name="add_device">Voeg Toestel by</string>
+    <string name="border_collie_dog_description">Border Collie Hond</string>
+    <string name="border_collie_breed">Border Collie</string>
+    <string name="age">Ouderdom</string>
+    <string name="weight">Gewig</string>
+    <string name="sex">Geslag</string>
+    <string name="female">Wyfie</string>
+    <string name="about_bella">Oor Bella</string>
+    <string name="bella_description">Bella is \'n baie speels en energieke Border Collie. Sy hou daarvan om in die park te hardloop en speel haal-en-steek. Sy is goed gedra en hou daarvan om te kroel.</string>
+    <string name="health_status">Gesondheid Status</string>
+    <string name="view_full_profile">Bekyk Volledige Profiel</string>
+    <string name="add_new_pet">Voeg Nuwe Troeteldier by</string>
+    <string name="add_pet_photo">Voeg Troeteldier Foto by</string>
+    <string name="pet_name">Troeteldier Naam</string>
+    <string name="breed">Ras</string>
+    <string name="weight_kg">Gewig (kg)</string>
+    <string name="save_pet">Stoor Troeteldier</string>
+    <string name="back_button">Terug</string>
+    <string name="phone_number">Eienaar Nommer</string>
+    <string name="owner_icon_description">Eienaar Ikoon</string>
+    <string name="app_logo_description">Petnest Logo</string>
+    <string name="doctor_description">dokter beeld</string>
+    <string name="default_web_client_id">751956835634-npmcupho20qvntoot0h13p8ik2of0ag7.apps.googleusercontent.com</string>
+    <string name="back">Terug</string>
+    <string name="settings">Instellings</string>
+    <string name="health_records">Gesondheid Rekords</string>
+    <string name="health_icon">GESONDHEID</string>
+    <string name="behavior">GEDRAG HULPMIDDEL</string>
+</resources>
+
+<!--
+Reference list:
+
+Phillipp Lackner. 2023. THIS Is How EASILY Transalte Your App. [video online] Available at: https://www.youtube.com/shorts/NipoeURcxwI [Accessed 18 November 2025].
+-->
