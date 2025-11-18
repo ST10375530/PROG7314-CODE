@@ -13,7 +13,9 @@ import com.google.firebase.firestore.persistentCacheSettings
 import kotlinx.coroutines.tasks.await
 import vcmsa.projects.petcareapp.Data.Models.User
 
-
+object OfflineUserManager {
+    var currentOfflineUser: User? = null
+}
 
 class AuthRepository() {
     //vars for firebase
@@ -72,7 +74,7 @@ class AuthRepository() {
     }
 
     // Authenticate with Google ID token
-    // Sign in/up with Google (Firebase
+    // Sign in/up with Google (Firebase, 2025):
     suspend fun signInWithGoogle(idToken: String): Result<Unit> {
         return try {
             //setting up the google + firebase auth providers (Firebase, 2025):
@@ -105,8 +107,6 @@ class AuthRepository() {
                         email = user.email ?: "",
                         passwordHash = ""
                     )
-                   //storing with firestore (Firebase, 2025):
-                    users.document(user.uid).set(newUser).await()
                 }
                 //existing users will already have their data in Firestore
             }
@@ -128,6 +128,10 @@ class AuthRepository() {
                 passwordHash = ""
             )
             return user
+        }
+        else if (OfflineUserManager.currentOfflineUser != null){
+            // Fall back to our offline user
+            return OfflineUserManager.currentOfflineUser
         }
         else{
             return null
@@ -163,6 +167,7 @@ class AuthRepository() {
             // Try to convert to User object
             val user = document.toObject(User::class.java)
             if (user != null && verifyPassword(password, user.passwordHash)) {
+                OfflineUserManager.currentOfflineUser = user
                 Log.d("OfflineLogin", "User found, hash present: ${!user.passwordHash.isNullOrBlank()}")
                 true
             } else {
