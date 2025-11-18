@@ -187,7 +187,8 @@ https://claude.ai/share/4117377b-1d0e-4050-9922-f9729413c7b7
 To implement multi-language support for the PetNest application, specifically translating English text to Afrikaans and Zulu to demonstrate the functionality of the multi-language feature.
 
 DeepSeek AI was utilised strictly as a translation tool to convert application interface text (buttons, labels, prompts, and messages) from English into Afrikaans and Zulu. This automated what would have been a time-consuming manual process using traditional translation tools like Google Translate. The AI was only used for direct text translation. All original English content, user interface design, feature implementation, and the technical setup of the multi-language system (string resources, locale handling) were created independently. The AI did not contribute to any code logic, UI design decisions, or feature planning.
- 	Evidence link – https://chat.deepseek.com/share/uysoc2bzzsubv3mrgh
+#### Evidence link
+https://chat.deepseek.com/share/uysoc2bzzsubv3mrgh
 
 ### Conclusion
 - Both instances of AI usage were for specific, clearly defined tasks that supplemented rather than replaced original work:
