@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import vcmsa.projects.petcareapp.Data.Models.PetInfo
 import vcmsa.projects.petcareapp.UI.Home.HomeActivity
 import vcmsa.projects.petcareapp.databinding.ActivityAddPetsBinding
-import vcmsa.projects.petcareapp.services.NotificationHelper
+import vcmsa.projects.petcareapp.Data.Services.NotificationHelper
 
 class AddPetsActivity : AppCompatActivity() {
 
@@ -44,15 +44,15 @@ class AddPetsActivity : AppCompatActivity() {
 
                 // Send notification now — use pet name from the form
                 val petName = binding.addPetName.text.toString().trim()
-                val nid = petName.hashCode() // unique notification id per pet name
-                NotificationHelper.notifyNow(
-                    this,
-                    id = nid,
-                    title = "New Pet Added!",
-                    body = "$petName has been added to your PetCare profile.",
-                    useRemindersChannel = false, // correct param name
-                    petName = petName
-                )
+                val nid = petName.hashCode()
+//                NotificationHelper.notifyNow(
+//                    this,
+//                    id = nid,
+//                    title = "New Pet Added!",
+//                    body = "$petName has been added to your PetCare profile.",
+//                    useRemindersChannel = false,
+//                    petName = petName
+//                )
 
                 // Navigate to Home
                 val intent = Intent(this, HomeActivity::class.java)
