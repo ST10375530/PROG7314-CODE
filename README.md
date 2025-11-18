@@ -2,8 +2,14 @@
 ## POE – README
 
 ---
-## Youtube video Link:
+## Youtbue video Link (POE):
+https://youtu.be/aSP5-GIeeAc 
+## Biometrics on my phone:
+it doesn't display in the video. I assume for security reason. but a biometric finger scanner pops up and scans my finger. 
+it will work on your side if you have biometrics setup on your device.
+## Youtube video Link (Part 2):
 https://youtu.be/uHv4885ecJA
+
 ---
 ## API URL:
 https://petnest-api.onrender.com/
