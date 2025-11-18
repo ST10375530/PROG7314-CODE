@@ -62,7 +62,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     //firebase
     implementation(libs.google.firebase.auth)
-
+    //firestore
     implementation(libs.google.firebase.firestore)
     //google + facebook
     implementation(libs.play.services.identity)
@@ -74,4 +74,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     //Bcrypt - kotlin
     implementation("at.favre.lib:bcrypt:0.10.2")
+
+    //biometrics
+    implementation("androidx.biometric:biometric:1.2.0-alpha05")
 }

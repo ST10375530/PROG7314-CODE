@@ -14,14 +14,26 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import kotlinx.coroutines.launch
+import vcmsa.projects.petcareapp.Data.Services.BiometricHelper
 import vcmsa.projects.petcareapp.R
 import vcmsa.projects.petcareapp.UI.Login.LoginActivity
 import vcmsa.projects.petcareapp.databinding.ActivitySettingsBinding
+import androidx.biometric.BiometricPrompt
+import vcmsa.projects.petcareapp.UI.Home.HomeActivity
+
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
     private val auth = FirebaseAuth.getInstance()
+    private var isAuthenticated = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Check if user is already authenticated for this session
+        if (!isAuthenticated) {
+
+            authenticateUser()
+            return
+        }
         enableEdgeToEdge()
         // Apply theme before setting content view
         ThemeManager.initializeTheme(this)
@@ -34,6 +46,57 @@ class SettingsActivity : AppCompatActivity() {
                 systemBars.bottom)
             insets
         }
+        setupThemeSwitch()
+        setupClickListeners()
+    }
+    private fun authenticateUser() {
+        //call the backend methods to make sure the biometrics are available
+        if (BiometricHelper.isBiometricAvailable(this)) {
+            //passing to the parameters we created for the showBiometricPrompt (Developers, 2025):
+            BiometricHelper.showBiometricPrompt(
+                activity = this,
+                title = "Settings Access",
+                subtitle = "Authenticate to access your settings",
+                onSuccess = {
+                    isAuthenticated = true
+                    initializeUI()
+                },
+                //Displaying any errors with a toast (Kodeco, 2020):
+                onError = { errorCode, errString ->
+                    Toast.makeText(this, "Authentication failed: $errString", Toast.LENGTH_SHORT).show()
+                    if (errorCode == BiometricPrompt.ERROR_USER_CANCELED) {
+                        finish()
+                    }
+                }
+            )
+        } else {
+            //if biometric is not available, show a message and close (Kodeco, 2020; Developers, 2025):
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Authentication Required")
+                .setMessage("Device security (biometric/password) is required to access settings but is not available on this device.")
+                .setPositiveButton("OK") { dialog, _ ->
+                    dialog.dismiss()
+                    finish()
+                }
+                .setOnDismissListener {
+                    finish()
+                }
+                .show()
+        }
+    }
+    private fun initializeUI() {
+        isAuthenticated = true
+        //apply theme before setting content view
+        ThemeManager.initializeTheme(this)
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
         setupThemeSwitch()
         setupClickListeners()
     }
@@ -246,3 +309,9 @@ class SettingsActivity : AppCompatActivity() {
             .show()
     }
 }
+
+//Reference List:
+
+//Developers. 2025. BiometricPrompt. [Online]. Available at: https://developer.android.com/reference/androidx/biometric/BiometricPrompt [Accessed 18 November 2025].
+
+//Kodeco. 2020. AndroidX Biometric Library: Getting Started. [Online]. Available at: https://www.kodeco.com/7578543-androidx-biometric-library-getting-started [Accessed 18 November 2025].
