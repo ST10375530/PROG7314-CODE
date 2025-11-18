@@ -55,7 +55,7 @@ The app must also demonstrate **SSO login**, **settings management**, and select
 - For **The final part** of the POE, the focus was on integrating third party APIs for maps (google maps/MapBox maps) for finding nearest places related to pets (such as parks, vets, petstores, etc) and we also tried to implement Gemini AI through an API to generate advanced responses for the user's questions related to pets. On top of that certain quality of life updates where implemnted such as:
   - Biometrics for security
   - Offline capabilities (Where applicable)
-  - Multi-langauge (attempted not functioning atm)
+  - Multi-langauge
   - notifications to remind the user when appointments are for pets or food/medicine reminders
 ---
 
