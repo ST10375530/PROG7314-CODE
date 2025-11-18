@@ -36,17 +36,24 @@ The app provides a centralized platform where users can:
   - Cloud-hosted APIs  
   - Unit testing  
   - GitHub Actions CI/CD pipelines  
-
-For **Part 2** of the PoE, the focus is on developing a working prototype that connects to a hosted backend API and database.  
+  - Seperation of concern
+  - Good programming standards 
+- For **Part 2** of the PoE, the focus was on developing a working prototype that connects to a hosted backend API and database.  
 The app must also demonstrate **SSO login**, **settings management**, and selected features from the Part 1 design document.
 
+- For **The final part** of the POE, the focus was on integrating third party APIs for maps (google maps/MapBox maps) for finding nearest places related to pets (such as parks, vets, petstores, etc) and we also tried to implement Gemini AI through an API to generate advanced responses for the user's questions related to pets. On top of that certain quality of life updates where implemnted such as:
+  - Biometrics for security
+  - Offline capabilities (Where applicable)
+  - Multi-langauge (attempted not functioning atm)
+  - notifications to remind the user when appoints are for pets or food/medicine reminders
 ---
 
 ## API Implementation Summary
 
-The backend for PetNest was implemented as a **RESTful API** using **Node.js** and **Express.js**,  
+- Part 2: The backend for PetNest was implemented as a **RESTful API** using **Node.js** and **Express.js**,  
 with data stored in **MongoDB Atlas** (a cloud-hosted NoSQL database).  
 The API is hosted on **Render**, allowing the Android app to connect to it over the internet.
+- Part 3: The third party APIs where implemented with their api keys and documentation was followed that the sites provided. 
 
 ### Technologies Used
 
@@ -74,9 +81,19 @@ The API is hosted on **Render**, allowing the Android app to connect to it over 
 - `GET /api/medicines` – List all medicines  
 - `GET /api/medicines/:id` – Retrieve medicine by ID  
 
+### Google maps API
+- Allows users to query google maps API to show the nearest locations around them based on the search. Search includes:
+  - Pet stores
+  - Parks
+  - Vets
+- might be more to the search but off the top of my head those are the ones that stick out. 
+
+### Gemini chat
+- Utilizing the gemini API, we created a chat feature where users can ask questions to the AI
+- chats are saved in the firestore database
 ---
 
-## Features Implemented (Part 2)
+## Features Implemented
 
 ### User Authentication with SSO
 - Implemented using **Firebase Authentication (Facebook Sign-In)**  
@@ -89,7 +106,7 @@ The API is hosted on **Render**, allowing the Android app to connect to it over 
 ### Pet Profiles
 - Add pet details: name, type, breed, weight, age, and photo  
 - View and edit pet information  
-- **Future Enhancements:** vaccination history, allergies, vet appointments  
+- vaccination history, allergies, vet appointments  
 
 ### Medicine Search
 - Search medicines by name using the backend API (`/api/medicines/search`)  
@@ -104,6 +121,17 @@ The API is hosted on **Render**, allowing the Android app to connect to it over 
 - Full vet locator using Google Maps SDK  
 - Final design assets and advanced UI polish  
 
+### Biometrics
+- Added biometrics to the settings page to prevent unauthorized users from changing the user's settings
+
+### Offline capabilities
+- utilizies the firestore caching system to allow users to log into accounts they haved logged into well online.
+- users can add pets and recieve notifications/reminders well in offline mode.
+- They also can access any health records they have fetched previously and add new ones where required.
+
+### Notification system
+- a notification system that reminds the user when they are supposed to feed/give food/medicine to their pet
+- It also will be able to tell the user when appointments are due in the future
 ---
 
 ## Design Considerations
@@ -128,13 +156,16 @@ The API is hosted on **Render**, allowing the Android app to connect to it over 
 
 ## External Libraries & SDKs
 
-### Android (Frontend)
+### Android
 - **Retrofit** – API communication  
 - **Firebase Authentication SDK** – SSO login  
+- **Firestore** - For storing to db  and caching data locally
 - **Glide** – Image loading  
-- **Google Maps SDK (planned)** – Vet locator  
+- **Google Maps SDK** – Vet locator  
+- **Gemini AI SDKs** - Gemini chat
+- **BCrypt - kotlin** Kotlin's BCrypt system to hash and salt passwords before storing in the db
 
-### Backend (API)
+### API libraries:
 - **Express.js** – REST API framework  
 - **Mongoose** – ODM for MongoDB  
 - **Helmet** – API security  
@@ -145,17 +176,16 @@ The API is hosted on **Render**, allowing the Android app to connect to it over 
 
 ## Database & Hosting
 
-- **Database:** MongoDB Atlas (cloud cluster)  
+- **API Database:** MongoDB Atlas (cloud cluster)  
 - **Collections:** medicines, users (basic test data)  
 - **Hosting:** Render (Node.js API)  
 - **Backend Access:** Hosted URL via Render  
-- **Authentication Service:** Firebase Authentication (Facebook SSO)  
+- **Authentication Service:** Firebase Authentication
+- **Firestore DB:** Firestore database with firebase ecosystem
 
 > **Note:** Render’s free tier spins down after inactivity, causing delays on the first API request.
 
 ---
-
-## Demo Video
 
 📺 **GitHub Repository:**  
 [https://github.com/ST10375530/PROG7314-CODE](https://github.com/ST10375530/PROG7314-CODE)
