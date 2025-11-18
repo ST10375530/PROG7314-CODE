@@ -164,6 +164,39 @@ The API is hosted on **Render**, allowing the Android app to connect to it over 
 - Unit tests and Postman tests validate functionality  
 
 ---
+# PetNest AI Tool Usage Report 
+- During the development of PetNest, two team members utilised AI tools to assist with specific technical challenges and implementation tasks. This report outlines the manner in which these tools were employed, the extent of their use, and how they contributed to the final product.
+
+- Tools Used
+	- Claude AI (claude.ai) - Used for technical architecture guidance and map integration planning
+  - DeepSeek AI (chat.deepseek.com) - Used for multi-language translation feature
+
+### Map Integration Technical Guidance (Claude AI)
+#### Purpose – 
+To determine the optimal approach for implementing location based features (veterinary locator, parks, and pet stores, etc.) within the application
+
+Claude AI was consulted for high-level architectural guidance on integrating map functionality into an Android application. The consultation focused on comparing different map API options, understanding technical implementation approaches, learning about proper manifest permissions and required dependencies and understanding the geo: URI format for launching external map applications.
+
+All final implementation code, including the PlaceInfo data model, Intent/WebView logic, error handling, navigation structure, and integration with existing app components (HomeActivity, VetsActivity, ParksActivity, PetStoresActivity, and ExploreActivity) was independently written by the developer. The code structure and application-specific logic were designed to align with the existing PetNest architecture and user flow.
+
+#### Evidence link 
+https://claude.ai/share/4117377b-1d0e-4050-9922-f9729413c7b7
+
+### Multi-Language Translation (DeepSeek AI)
+#### Purpose – 
+To implement multi-language support for the PetNest application, specifically translating English text to Afrikaans and Zulu to demonstrate the functionality of the multi-language feature.
+
+DeepSeek AI was utilised strictly as a translation tool to convert application interface text (buttons, labels, prompts, and messages) from English into Afrikaans and Zulu. This automated what would have been a time-consuming manual process using traditional translation tools like Google Translate. The AI was only used for direct text translation. All original English content, user interface design, feature implementation, and the technical setup of the multi-language system (string resources, locale handling) were created independently. The AI did not contribute to any code logic, UI design decisions, or feature planning.
+ 	Evidence link – https://chat.deepseek.com/share/uysoc2bzzsubv3mrgh
+
+### Conclusion
+- Both instances of AI usage were for specific, clearly defined tasks that supplemented rather than replaced original work:
+  - Technical guidance was used to understand implementation options, not to generate solutions
+  - Translation automation replaced manual dictionary work, not creative or analytical thinking
+
+- All core application logic, feature design, database architecture, API integration, user interface implementation, and overall project structure represent original work by the development team. The AI tools served as assistants for specific technical questions and routine tasks, similar to consulting documentation or using automated tools for basic operations.
+
+---
 
 ## External Libraries & SDKs
 
