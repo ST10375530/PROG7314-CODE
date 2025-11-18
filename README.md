@@ -2,6 +2,9 @@
 ## POE – README
 
 ---
+## Github Link:
+https://github.com/ST10375530/PROG7314-CODE 
+
 ## Youtbue video Link (POE):
 https://youtu.be/aSP5-GIeeAc 
 ## Biometrics on my phone:
@@ -70,7 +73,7 @@ The API is hosted on **Render**, allowing the Android app to connect to it over 
 - **Mongoose** – Object Data Modeling (ODM) library for MongoDB  
 - **dotenv (.env)** – Manage environment variables securely  
 - **Helmet & CORS** – Middleware to improve API security  
-
+- **Third party sdks and libraries** - Libraries for the third party api systems
 ---
 
 ## Core Features Implemented
